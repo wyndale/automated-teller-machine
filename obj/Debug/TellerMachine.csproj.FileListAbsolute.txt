@@ -1,0 +1,7 @@
+C:\Users\ASUS\source\repos\TellerMachine\bin\Debug\TellerMachine.exe.config
+C:\Users\ASUS\source\repos\TellerMachine\bin\Debug\TellerMachine.exe
+C:\Users\ASUS\source\repos\TellerMachine\bin\Debug\TellerMachine.pdb
+C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.exe
+C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.pdb
