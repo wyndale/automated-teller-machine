@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Data;
-using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace TellerMachine
 {
@@ -13,7 +10,7 @@ namespace TellerMachine
         public enum CardType
         {
             Debit,
-            ATMOnly,
+            ATM,
             PrepaidDebit,
             ContactLessDebit,
             InternationalDebit
@@ -27,126 +24,234 @@ namespace TellerMachine
         }
     }
 
-    public class ATM
+    public interface ICustomerDatabase
     {
-        private DataSet customersData;
-        private decimal balance;
+        void AddCustomer(Customer customer);
+        Customer FindCustomer(ulong accountNum);
+        IEnumerable<Customer> GetCustomers();
+    }
+
+    public class Customer
+    {
+        private ulong accountNum;
+        private string fullname;
+        private string email;
+        private int pincode;
         private Card cardType;
+        private decimal balance;
 
-        public decimal Balance { get => balance; set => balance = value; }
+        public ulong AccountNumber { get => accountNum; set => accountNum = value; }
+        public string FullName { get => fullname; set => fullname = value; }
+        public string Email { get => email; set => email = value; }
+        public int PinCode { get => pincode; set => pincode = value; }
         public Card CardType { get => cardType; set => cardType = value; }
+        public decimal Balance { get => balance; set => balance = value; }
 
-        public ATM()
+        public Customer(string fullname, string email, ulong accountNum, int pincode, Card cardType, decimal balance)
         {
-            this.customersData = new DataSet("Customers Information");
-
-            DataTable customersTable = new DataTable("Customers");
-            customersTable.Columns.Add("Card type", typeof(Card));
-            customersTable.Columns.Add("Fullname", typeof(string));
-            customersTable.Columns.Add("Email", typeof(string));
-            customersTable.Columns.Add("Account number", typeof(ulong));
-            customersTable.Columns.Add("Pin code", typeof(int));
-            customersTable.Columns.Add("Balance", typeof(decimal));
-
-            this.customersData.Tables.Add(customersTable);
-        }
-
-        public void AddCustomer(string fullname, string email, ulong accountNum, int pincode, decimal balance, Card cardType)
-        {
-            DataTable customersTable = customersData.Tables["Customers"];
-            DataRow row = customersTable.NewRow();
-
-            row["Card type"] = cardType;
-            row["Full name"] = fullname;
-            row["Email address"] = email;
-            row["Account number"] = accountNum;
-            row["Pin code"] = pincode;
-            row["Balance"] = balance;
-            Balance = balance;
+            FullName = fullname;
+            Email = email;
+            AccountNumber = accountNum;
+            PinCode = pincode;
             CardType = cardType;
-
-            customersTable.Rows.Add(row);
-        }
-
-        public DataRow FindCustomer(ulong accountNum)
-        {
-            DataTable customersTable = customersData.Tables["Customers"];
-            DataRow[] rows = customersTable.Select($"Account number = {accountNum}");
-            return rows.Length > 0 ? rows[0] : null;
-        }
-
-        public string MaskData(ulong accountNum)
-        {
-            string accountNumStr = accountNum.ToString();
-            return Regex.Replace(accountNumStr, @"(?<=^\d{2})\d", "*");
-        }
-
-        public void DisplayMaskInfo()
-        {
-            DataTable customersTable = customersData.Tables["Customers"];
-            foreach (DataRow row in customersTable.Rows)
-            {
-                string masked = MaskData((ulong)row["Account number"]);
-                Console.Write($"\nCard type: {row["Card type"]}\n");
-                Console.WriteLine($"Full name: {row["Full name"]}\nEmail: {row["Email address"]}\nAccount number: {row["Account number"]}" +
-                    $"\nPin code: {row["Pin code"]}\nBalance: {row["Balance"]}");
-            }
+            Balance = balance;
         }
     }
 
+    public class CustomerDatabase : ICustomerDatabase
+    {
+        private List<Customer> _customers;
+
+        public CustomerDatabase()
+        {
+            _customers = new List<Customer>();
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            _customers.Add(customer);
+        }
+
+        public Customer FindCustomer(ulong accountNum)
+        {
+            return _customers.FirstOrDefault(c => c.AccountNumber == accountNum);
+        }
+
+        public IEnumerable<Customer> GetCustomers()
+        {
+            return _customers;
+        }
+    }
+
+    public class ATM
+    {
+        private readonly ICustomerDatabase _customerDatabase;
+
+        public ATM(ICustomerDatabase customerDatabase)
+        {
+            _customerDatabase = customerDatabase;
+        }
+
+        public void AddCustomer(string fullname, string email, ulong accountNum, int pincode, Card cardType, decimal balance)
+        {
+            var customer = new Customer(fullname, email, accountNum, pincode, cardType, balance);
+            _customerDatabase.AddCustomer(customer);
+        }
+
+        public Customer FindCustomer(ulong accountNumber)
+        {
+            return _customerDatabase.FindCustomer(accountNumber);
+        }
+
+        public string MaskAccountNumber(ulong accountNum)
+        {
+            string accountNumStr = accountNum.ToString();
+            if (accountNumStr.Length > 2)
+            {
+                return accountNumStr.Substring(0, 2) + new string('*', accountNumStr.Length - 2);
+            }
+            return accountNumStr;
+        }
+
+        public string MaskEmail(string email)
+        {
+            var atIndex = email.IndexOf('@');
+            if (atIndex > 3)
+            {
+                return email.Substring(0, 3) + new string('*', atIndex - 3) + email.Substring(atIndex);
+            }
+            return new string('*', atIndex) + email.Substring(atIndex);
+        }
+
+        public void DisplayMaskInfo(ulong accountNumber)
+        {
+            var customer = _customerDatabase.FindCustomer(accountNumber);
+            if (customer != null)
+            {
+                string maskedAccountNumber = MaskAccountNumber(customer.AccountNumber);
+                string maskedEmail = MaskEmail(customer.Email);
+                Console.WriteLine($"\nCard type: {customer.CardType.Type}");
+                Console.WriteLine($"Full name: {customer.FullName}");
+                Console.WriteLine($"Email: {maskedEmail}");
+                Console.WriteLine($"Account number: {maskedAccountNumber}");
+            }
+        }
+
+    }
+
+    public delegate void Receipt(string message);
+
     public interface IWithdrawal
     {
-        void CashWithdrawal(decimal amount);
-        void WithdrawalReceipt();
+        void CashWithdrawal(decimal amount, ulong accountNumber);
+        void TransactionDetails(ulong accountNumber);
     }
 
     public interface IAccountBalance
     {
-        void AccountBalance();
+        void AccountBalance(ulong accountNumber);
     }
 
     public class Withdraw : ATM, IWithdrawal
     {
-        public Withdraw()
+        public event Receipt withdrawalReceipt;
+
+        public Withdraw(ICustomerDatabase customerDatabase) : base(customerDatabase)
         {
         }
 
-        public void CashWithdrawal(decimal amount)
+        public void CashWithdrawal(decimal amount, ulong accountNumber)
         {
-            if (Balance >= amount)
+            var customer = FindCustomer(accountNumber);
+            if (customer != null && customer.Balance >= amount)
             {
-                Balance -= amount;
+                customer.Balance -= amount;
+                TransactionDetails(accountNumber);
             }
             else
             {
-                throw new InvalidOperationException("Insufficient funds!");
+                Console.WriteLine("Insufficient funds!");
             }
         }
 
-        public void WithdrawalReceipt()
+        public void TransactionDetails(ulong accountNumber)
         {
-
+            var customer = FindCustomer(accountNumber);
+            if (customer != null)
+            {
+                Console.WriteLine("\n_____________________________________________");
+                withdrawalReceipt?.Invoke($"\n\nCash withdrawn successfully!\n");
+                Console.WriteLine($"Date withdraw: {DateTime.Now}");
+                Console.WriteLine($"\nNew Balance: {customer.Balance:C}");
+                Console.WriteLine("\n_____________________________________________");
+            }
         }
     }
 
     public class CheckAccountBalance : ATM, IAccountBalance
     {
-
-
-        public void AccountBalance()
+        public CheckAccountBalance(ICustomerDatabase customerDatabase) : base(customerDatabase)
         {
-            Console.Write($"Balance: {Balance}");
+        }
+
+        public void AccountBalance(ulong accountNumber)
+        {
+            var customer = FindCustomer(accountNumber);
+            if (customer != null)
+            {
+                Console.WriteLine("\n____________________________________");
+                Console.WriteLine($"\nBalance: {customer.Balance:C}");
+                Console.WriteLine("\n____________________________________");
+            }
+            else
+            {
+                Console.WriteLine("Customer not found!");
+            }
         }
     }
 
-    public class TransferMoney
+    public class TransferMoney : ATM
     {
+        public TransferMoney(ICustomerDatabase customerDatabase) : base(customerDatabase)
+        {
+        }
 
+        public void Transfer(ulong fromAccount, ulong toAccount, decimal amount)
+        {
+            var sender = FindCustomer(fromAccount);
+            var receiver = FindCustomer(toAccount);
 
+            if (sender != null && receiver != null && sender.Balance >= amount)
+            {
+                sender.Balance -= amount;
+                receiver.Balance += amount;
+                Console.WriteLine($"Transfer successful! {amount} transferred from {fromAccount} to {toAccount}.");
+            }
+            else
+            {
+                Console.WriteLine("Transfer failed. Check account details or balance.");
+            }
+        }
     }
 
-    public class TransactionHistory
+    public class TransactionHistory : ATM
     {
+        public TransactionHistory(ICustomerDatabase customerDatabase) : base(customerDatabase)
+        {
+        }
 
+        public void DisplayHistory(ulong accountNumber)
+        {
+            // Assuming a simple display function for now, as we haven't stored transactions.
+            var customer = FindCustomer(accountNumber);
+            if (customer != null)
+            {
+                Console.WriteLine($"Displaying transaction history for account: {accountNumber} (placeholder, as no actual transactions are recorded)");
+            }
+            else
+            {
+                Console.WriteLine("Customer not found!");
+            }
+        }
     }
 }
