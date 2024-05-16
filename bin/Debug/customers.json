@@ -1,0 +1,422 @@
+[
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 944746.00,
+    "Transactions": [
+      {
+        "Date": "2024-05-15T22:38:42.6932804-08:00",
+        "Type": "Withdraw",
+        "Amount": 2.0,
+        "ToAccount": null
+      },
+      {
+        "Date": "2024-05-15T22:43:27.9876075-08:00",
+        "Type": "Withdraw",
+        "Amount": 5000.0,
+        "ToAccount": null
+      },
+      {
+        "Date": "2024-05-15T22:43:56.963501-08:00",
+        "Type": "Transfer",
+        "Amount": 50000.0,
+        "ToAccount": 98765
+      },
+      {
+        "Date": "2024-05-15T23:03:10.1540393-08:00",
+        "Type": "Withdraw",
+        "Amount": 200.0,
+        "ToAccount": null
+      },
+      {
+        "Date": "2024-05-15T23:06:52.1612465-08:00",
+        "Type": "Withdraw",
+        "Amount": 2.0,
+        "ToAccount": null
+      },
+      {
+        "Date": "2024-05-15T23:07:26.6801173-08:00",
+        "Type": "Transfer",
+        "Amount": 500.0,
+        "ToAccount": 12345678
+      },
+      {
+        "Date": "2024-05-15T23:07:26.6801173-08:00",
+        "Type": "Received",
+        "Amount": 500.0,
+        "ToAccount": 12345678
+      },
+      {
+        "Date": "2024-05-15T23:07:44.7758523-08:00",
+        "Type": "Transfer",
+        "Amount": 50.0,
+        "ToAccount": 98765
+      }
+    ]
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 95050.00,
+    "Transactions": [
+      {
+        "Date": "2024-05-15T22:43:56.963501-08:00",
+        "Type": "Received",
+        "Amount": 50000.0,
+        "ToAccount": 98765
+      },
+      {
+        "Date": "2024-05-15T22:46:14.0428959-08:00",
+        "Type": "Withdraw",
+        "Amount": 5000.0,
+        "ToAccount": null
+      },
+      {
+        "Date": "2024-05-15T23:07:44.7758523-08:00",
+        "Type": "Received",
+        "Amount": 50.0,
+        "ToAccount": 98765
+      }
+    ]
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 12345678,
+    "FullName": "Wendel Lapura",
+    "Email": "lapurawendel95@gmail.com",
+    "PinCode": 2004,
+    "CardType": {
+      "Type": 0
+    },
+    "Balance": 1000000.00,
+    "Transactions": []
+  },
+  {
+    "AccountNumber": 98765,
+    "FullName": "Jane Smith",
+    "Email": "jane.smith@example.com",
+    "PinCode": 5678,
+    "CardType": {
+      "Type": 1
+    },
+    "Balance": 50000.00,
+    "Transactions": []
+  }
+]

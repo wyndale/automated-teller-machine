@@ -5,3 +5,6 @@ C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.csproj.Assembly
 C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.csproj.CoreCompileInputs.cache
 C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.exe
 C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.pdb
+C:\Users\ASUS\source\repos\TellerMachine\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ASUS\source\repos\TellerMachine\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ASUS\source\repos\TellerMachine\obj\Debug\TellerMachine.csproj.CopyComplete

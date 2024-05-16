@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace TellerMachine
 {
@@ -39,6 +42,7 @@ namespace TellerMachine
         private int pincode;
         private Card cardType;
         private decimal balance;
+        private List<Transaction> transactions;
 
         public ulong AccountNumber { get => accountNum; set => accountNum = value; }
         public string FullName { get => fullname; set => fullname = value; }
@@ -46,6 +50,7 @@ namespace TellerMachine
         public int PinCode { get => pincode; set => pincode = value; }
         public Card CardType { get => cardType; set => cardType = value; }
         public decimal Balance { get => balance; set => balance = value; }
+        public List<Transaction> Transactions { get => transactions; set => transactions = value; }
 
         public Customer(string fullname, string email, ulong accountNum, int pincode, Card cardType, decimal balance)
         {
@@ -55,21 +60,42 @@ namespace TellerMachine
             PinCode = pincode;
             CardType = cardType;
             Balance = balance;
+            Transactions = new List<Transaction>();
         }
     }
+
+    public class Transaction
+    {
+        public DateTime Date { get; set; }
+        public string Type { get; set; }
+        public decimal Amount { get; set; }
+        public ulong? ToAccount { get; set; }
+
+        public Transaction(DateTime date, string type, decimal amount, ulong? toAccount = null)
+        {
+            Date = date;
+            Type = type;
+            Amount = amount;
+            ToAccount = toAccount;
+        }
+    }
+
 
     public class CustomerDatabase : ICustomerDatabase
     {
         private List<Customer> _customers;
+        private readonly string _filePath = "customers.json";
 
         public CustomerDatabase()
         {
             _customers = new List<Customer>();
+            LoadCustomers();
         }
 
         public void AddCustomer(Customer customer)
         {
             _customers.Add(customer);
+            SaveCustomers();
         }
 
         public Customer FindCustomer(ulong accountNum)
@@ -81,11 +107,28 @@ namespace TellerMachine
         {
             return _customers;
         }
+
+        public void SaveCustomers()
+        {
+            string json = JsonConvert.SerializeObject(_customers, Formatting.Indented);
+            File.WriteAllText(_filePath, json);
+        }
+
+        public void LoadCustomers()
+        {
+            if (File.Exists(_filePath))
+            {
+                string json = File.ReadAllText(_filePath);
+                _customers = JsonConvert.DeserializeObject<List<Customer>>(json) ?? new List<Customer>();
+            }
+        }
     }
 
     public class ATM
     {
         private readonly ICustomerDatabase _customerDatabase;
+
+        public ICustomerDatabase CustomerDatabase => _customerDatabase;
 
         public ATM(ICustomerDatabase customerDatabase)
         {
@@ -95,12 +138,12 @@ namespace TellerMachine
         public void AddCustomer(string fullname, string email, ulong accountNum, int pincode, Card cardType, decimal balance)
         {
             var customer = new Customer(fullname, email, accountNum, pincode, cardType, balance);
-            _customerDatabase.AddCustomer(customer);
+            CustomerDatabase.AddCustomer(customer);
         }
 
         public Customer FindCustomer(ulong accountNumber)
         {
-            return _customerDatabase.FindCustomer(accountNumber);
+            return CustomerDatabase.FindCustomer(accountNumber);
         }
 
         public string MaskAccountNumber(ulong accountNum)
@@ -125,7 +168,7 @@ namespace TellerMachine
 
         public void DisplayMaskInfo(ulong accountNumber)
         {
-            var customer = _customerDatabase.FindCustomer(accountNumber);
+            var customer = CustomerDatabase.FindCustomer(accountNumber);
             if (customer != null)
             {
                 string maskedAccountNumber = MaskAccountNumber(customer.AccountNumber);
@@ -166,6 +209,8 @@ namespace TellerMachine
             if (customer != null && customer.Balance >= amount)
             {
                 customer.Balance -= amount;
+                customer.Transactions.Add(new Transaction(DateTime.Now, "Withdraw", amount));
+                ((CustomerDatabase)CustomerDatabase).SaveCustomers();
                 TransactionDetails(accountNumber);
             }
             else
@@ -203,10 +248,6 @@ namespace TellerMachine
                 Console.WriteLine($"\nBalance: {customer.Balance:C}");
                 Console.WriteLine("\n____________________________________");
             }
-            else
-            {
-                Console.WriteLine("Customer not found!");
-            }
         }
     }
 
@@ -225,7 +266,12 @@ namespace TellerMachine
             {
                 sender.Balance -= amount;
                 receiver.Balance += amount;
-                Console.WriteLine($"Transfer successful! {amount} transferred from {fromAccount} to {toAccount}.");
+                sender.Transactions.Add(new Transaction(DateTime.Now, "Transfer", amount, toAccount));
+                receiver.Transactions.Add(new Transaction(DateTime.Now, "Received", amount, toAccount));
+                ((CustomerDatabase)CustomerDatabase).SaveCustomers();
+                Console.WriteLine("\n____________________________________");
+                Console.WriteLine($"\n\nTransfer successful! {amount:C} transferred from {fromAccount} to {toAccount}.");
+                Console.WriteLine("\n____________________________________");
             }
             else
             {
@@ -242,15 +288,14 @@ namespace TellerMachine
 
         public void DisplayHistory(ulong accountNumber)
         {
-            // Assuming a simple display function for now, as we haven't stored transactions.
             var customer = FindCustomer(accountNumber);
             if (customer != null)
             {
-                Console.WriteLine($"Displaying transaction history for account: {accountNumber} (placeholder, as no actual transactions are recorded)");
-            }
-            else
-            {
-                Console.WriteLine("Customer not found!");
+                Console.WriteLine($"\n\nTransaction history for account: {accountNumber}\n");
+                foreach (var transaction in customer.Transactions)
+                {
+                    Console.WriteLine($"{transaction.Date}: {transaction.Type} of {transaction.Amount:C} {(transaction.ToAccount.HasValue ? "to account " + transaction.ToAccount : string.Empty)}");
+                }
             }
         }
     }
