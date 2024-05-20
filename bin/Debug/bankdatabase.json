@@ -1,0 +1,311 @@
+[
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000993101.92,
+    "Transactions": [
+      {
+        "Date": "2024-05-19T19:11:38.6983908-08:00",
+        "Type": "Deposit",
+        "Amount": 10000.0
+      },
+      {
+        "Date": "2024-05-19T19:11:38.7003961-08:00",
+        "Type": "Withdrawal",
+        "Amount": 10000.0
+      },
+      {
+        "Date": "2024-05-19T19:22:03.2212804-08:00",
+        "Type": "Deposit",
+        "Amount": 2000.0
+      },
+      {
+        "Date": "2024-05-19T19:22:03.2232842-08:00",
+        "Type": "Withdrawal",
+        "Amount": 2000.0
+      },
+      {
+        "Date": "2024-05-19T20:00:21.4504788-08:00",
+        "Type": "Mortgage",
+        "Amount": 100.0
+      },
+      {
+        "Date": "2024-05-19T20:03:49.7373402-08:00",
+        "Type": "Deposit",
+        "Amount": 1000000.0
+      },
+      {
+        "Date": "2024-05-19T20:03:57.8007329-08:00",
+        "Type": "Withdrawal",
+        "Amount": 200.0
+      },
+      {
+        "Date": "2024-05-19T20:04:04.2176625-08:00",
+        "Type": "Loan",
+        "Amount": 1000.0
+      },
+      {
+        "Date": "2024-05-19T20:04:10.1849875-08:00",
+        "Type": "Loan Payment",
+        "Amount": 10000.0
+      },
+      {
+        "Date": "2024-05-19T20:04:21.1605182-08:00",
+        "Type": "Mortgage",
+        "Amount": 12232.0
+      },
+      {
+        "Date": "2024-05-19T20:04:51.4012732-08:00",
+        "Type": "Mortgage Payment",
+        "Amount": 1000.0
+      },
+      {
+        "Date": "2024-05-19T20:18:40.9166963-08:00",
+        "Type": "Deposit",
+        "Amount": 1000.0
+      },
+      {
+        "Date": "2024-05-19T20:18:49.4023414-08:00",
+        "Type": "Withdrawal",
+        "Amount": 2.0
+      },
+      {
+        "Date": "2024-05-19T20:20:58.7443578-08:00",
+        "Type": "Deposit",
+        "Amount": 2.0
+      },
+      {
+        "Date": "2024-05-19T20:21:49.2327897-08:00",
+        "Type": "Deposit",
+        "Amount": 2.0
+      },
+      {
+        "Date": "2024-05-19T20:22:09.5447077-08:00",
+        "Type": "Withdrawal",
+        "Amount": 2.0
+      },
+      {
+        "Date": "2024-05-19T20:22:19.5036676-08:00",
+        "Type": "Loan",
+        "Amount": 1000.0
+      },
+      {
+        "Date": "2024-05-19T20:22:28.9675379-08:00",
+        "Type": "Loan Payment",
+        "Amount": 10000.0
+      },
+      {
+        "Date": "2024-05-19T20:22:40.535524-08:00",
+        "Type": "Mortgage",
+        "Amount": 12.0
+      },
+      {
+        "Date": "2024-05-19T20:22:47.384398-08:00",
+        "Type": "Mortgage Payment",
+        "Amount": 2.0
+      }
+    ]
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wyndale Ocero",
+    "Email": "wendellapura@gmail.com",
+    "Password": 82004,
+    "Type": 0,
+    "Balance": 1000000000.0,
+    "Transactions": []
+  },
+  {
+    "FullName": "Wendel Tabid",
+    "Email": "enchanteurtsukuba88@gmail.com",
+    "Password": 200408,
+    "Type": 1,
+    "Balance": 10000000000.0,
+    "Transactions": [
+      {
+        "Date": "2024-05-19T20:27:41.5499134-08:00",
+        "Type": "Deposit",
+        "Amount": 1.0
+      },
+      {
+        "Date": "2024-05-19T20:27:55.7337019-08:00",
+        "Type": "Withdrawal",
+        "Amount": 1.0
+      },
+      {
+        "Date": "2024-05-19T20:28:02.1896727-08:00",
+        "Type": "Loan",
+        "Amount": 1.0
+      }
+    ]
+  }
+]
